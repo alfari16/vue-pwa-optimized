@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="category">
-      <label>Kategori</label>
-      <select v-model="category.selected">
+    <div class="category container">
+      <label for="kategori">Kategori</label>
+      <select v-model="category.selected" id="kategori">
         <option v-for="single in category.choose" :value="single" :key="single">{{single.replace('-',' ').toUpperCase()}}</option>
       </select>
     </div>
@@ -64,7 +64,7 @@ export default {
 }
 .author{
   font-size: 13px;
-  color: #777;
+  color: #444;
   margin-top: 3px
 }
 a{
