@@ -32,6 +32,11 @@ export default {
   async created(){
     const data = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fwwwid')
     const {items} = await data.json()
+    items.forEach(el=>{
+      let temp = el.thumbnail.substr(8,el.thumbnail.length).split('/')
+      temp[2]='320'
+      el.thumbnail = 'https://'+temp.join('/')
+    })
     this.post=items
     let allCat = []
     items.forEach(el=>{

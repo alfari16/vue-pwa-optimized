@@ -1,7 +1,7 @@
 <template>
   <div ref="imgComponent">
     <img v-if="check" :src="dataSrc" :alt="dataAlt" class="thumbnail">
-    <div class="loading thumbnail" v-else></div>
+    <div class="loading loading-img" v-else></div>
   </div>
 </template>
 
@@ -18,9 +18,9 @@ export default {
     const position = this.$refs.imgComponent.getBoundingClientRect().top
     window.addEventListener('scroll',()=>{
       scroll = pageYOffset+outerHeight
-      if(scroll>=position) this.check=true
+      if(position<=scroll) this.check=true
     })
-    if(scroll>=position) this.check=true
+    if(position<=scroll) this.check=true
   }
 };
 </script>
@@ -30,5 +30,8 @@ img:not(.nav-img) {
   width: 100%;
   height: 200px;
   object-fit: scale-down;
+}
+loading-img{
+  height: 200px;
 }
 </style>
